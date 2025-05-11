@@ -64,7 +64,7 @@ namespace PasteTool
             InitializePasteTool();
             // Khởi tạo đồng hồ
             InitializeClock();
-
+            this.TopMost = true;
             // Khởi tạo hiệu ứng cầu vồng cho tên tác giả
             rainbowTimer = new System.Windows.Forms.Timer();
             rainbowTimer.Interval = 100; // Cập nhật màu mỗi 100ms
