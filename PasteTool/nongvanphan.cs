@@ -336,6 +336,8 @@ namespace PasteTool
             {
                 SendKeys.SendWait("{ENTER}"); // Nhấn Enter
                 Thread.Sleep(500); // Chờ 0.5 giây
+                // Đặt thuộc tính TopMost để MessageBox nổi trên mọi cửa sổ
+                this.TopMost = true;
                 MessageBox.Show($"Đã hoàn thành {currentLineIndex} dòng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             // *** Thêm dòng này để cập nhật trạng thái khi hoàn thành ***
