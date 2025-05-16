@@ -64,7 +64,7 @@ namespace PasteTool
             InitializePasteTool();
             // Khởi tạo đồng hồ
             InitializeClock();
-            this.TopMost = true;//Luôn hiện trên các ứng dụng khác
+            //this.TopMost = true;//Luôn hiện trên các ứng dụng khác
             // Khởi tạo hiệu ứng cầu vồng cho tên tác giả
             rainbowTimer = new System.Windows.Forms.Timer();
             rainbowTimer.Interval = 100; // Cập nhật màu mỗi 100ms
@@ -334,11 +334,10 @@ namespace PasteTool
             // Nếu hoàn thành, thông báo
             if (completed)
             {
-                SendKeys.SendWait("{ENTER}"); // Nhấn Enter
-                Thread.Sleep(500); // Chờ 0.5 giây
-                // Đặt thuộc tính TopMost để MessageBox nổi trên mọi cửa sổ
-                this.TopMost = true;
-                MessageBox.Show($"Đã hoàn thành {currentLineIndex} dòng !", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                SendKeys.SendWait("{ENTER}");
+                Thread.Sleep(500);
+                var notify = new NotifyForm($"Đã hoàn thành {currentLineIndex} dòng !");
+                notify.ShowDialog(); // Hiển thị form thông báo TopMost
             }
             // *** Thêm dòng này để cập nhật trạng thái khi hoàn thành ***
             lbStatus.Text = $"Hoàn thành dán\n{currentLineIndex} dòng!";

@@ -126,13 +126,13 @@ namespace PasteTool
             this.lbAuthor.Name = "lbAuthor";
             this.lbAuthor.Size = new System.Drawing.Size(90, 13);
             this.lbAuthor.TabIndex = 7;
-            this.lbAuthor.Text = "©Nong Van Phan";
+            this.lbAuthor.Text = "©Nông Văn Phấn";
             // 
             // lbStatus
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbStatus.Location = new System.Drawing.Point(229, 328);
+            this.lbStatus.Location = new System.Drawing.Point(231, 328);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(58, 13);
             this.lbStatus.TabIndex = 8;
@@ -142,11 +142,11 @@ namespace PasteTool
             // 
             this.lbInput.AutoSize = true;
             this.lbInput.BackColor = System.Drawing.Color.Transparent;
-            this.lbInput.Font = new System.Drawing.Font("Consolas", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbInput.ForeColor = System.Drawing.Color.Green;
-            this.lbInput.Location = new System.Drawing.Point(60, 6);
+            this.lbInput.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbInput.ForeColor = System.Drawing.Color.Indigo;
+            this.lbInput.Location = new System.Drawing.Point(8, 4);
             this.lbInput.Name = "lbInput";
-            this.lbInput.Size = new System.Drawing.Size(79, 13);
+            this.lbInput.Size = new System.Drawing.Size(67, 13);
             this.lbInput.TabIndex = 9;
             this.lbInput.Text = "Nhập dữ liệu";
             // 
