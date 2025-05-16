@@ -289,11 +289,17 @@ namespace PasteTool
                         while (isPasting && currentLineIndex < lines.Count)
                         {
                             Clipboard.SetText(lines[currentLineIndex]); // Đặt dòng vào clipboard
+                            await Task.Delay(50); // Độ trễ sau copy
+                            
                             SendKeys.SendWait("^{v}"); // Dán (Ctrl + V)
-                            SendKeys.SendWait("{ENTER}"); // Nhấn Enter
+                            await Task.Delay(50); // Độ trễ sau paste
+                            
+                            SendKeys.SendWait("{ENTER}"); // Nhấn Enter (nếu muốn có thêm delay thì thêm tiếp dòng dưới)
+                            await Task.Delay(50); // Độ trễ sau enter (nếu cần)
+                            
                             currentLineIndex++; // Tăng chỉ số dòng
                             UpdateLineCountLabel(); // Cập nhật nhãn số dòng
-                            await Task.Delay(pasteSpeed); // Chờ theo tốc độ
+                            await Task.Delay(pasteSpeed); // Chờ theo tốc độ cài đặt
                         }
 
                         // Kiểm tra nếu đã dán hết các dòng
