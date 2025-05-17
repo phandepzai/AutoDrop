@@ -132,7 +132,7 @@ namespace PasteTool
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbStatus.Location = new System.Drawing.Point(231, 328);
+            this.lbStatus.Location = new System.Drawing.Point(225, 328);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(58, 13);
             this.lbStatus.TabIndex = 8;

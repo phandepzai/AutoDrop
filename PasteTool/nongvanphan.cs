@@ -192,8 +192,8 @@ namespace PasteTool
             RegisterHotKey(this.Handle, HOTKEY_ESC, 0, (int)Keys.Escape);
 
             // *** Thêm dòng này để cập nhật trạng thái ***
-            lbStatus.Text = "Sẵn sàng";
-            lbStatus.ForeColor = Color.Green; // Tùy chọn: Đặt màu cho trạng thái
+            lbStatus.Text = "    SẴN SÀNG";
+            lbStatus.ForeColor = Color.DarkGreen; // Tùy chọn: Đặt màu cho trạng thái
             lbStatus.TextAlign = ContentAlignment.MiddleCenter;
             lbStatus.BackColor = Color.Transparent;
         }
@@ -235,8 +235,8 @@ namespace PasteTool
             InitializePasteTool(); // Khởi tạo lại công cụ dán
 
             // *** Thêm dòng này để cập nhật trạng thái ***
-            lbStatus.Text = "RESET";
-            lbStatus.ForeColor = Color.Peru; // Tùy chọn: Đặt màu cho trạng thái
+            lbStatus.Text = "    RESET";
+            lbStatus.ForeColor = Color.OrangeRed; // Tùy chọn: Đặt màu cho trạng thái
             lbStatus.TextAlign = ContentAlignment.MiddleCenter; //Căn lề chữ ở giữa
             lbStatus.BackColor = Color.Transparent;
         }
