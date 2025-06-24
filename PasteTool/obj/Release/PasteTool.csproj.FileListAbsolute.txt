@@ -1,0 +1,11 @@
+D:\DEV\AutoDrop\PasteTool\bin\Release\FAB Inspection.exe.config
+D:\DEV\AutoDrop\PasteTool\bin\Release\FAB Inspection.exe
+D:\DEV\AutoDrop\PasteTool\bin\Release\FAB Inspection.pdb
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.csproj.AssemblyReference.cache
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.nongvanphan.resources
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.NotifyForm.resources
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.Properties.Resources.resources
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.csproj.GenerateResource.cache
+D:\DEV\AutoDrop\PasteTool\obj\Release\PasteTool.csproj.CoreCompileInputs.cache
+D:\DEV\AutoDrop\PasteTool\obj\Release\FAB Inspection.exe
+D:\DEV\AutoDrop\PasteTool\obj\Release\FAB Inspection.pdb
