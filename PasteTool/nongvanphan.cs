@@ -440,7 +440,6 @@ namespace PasteTool
             UpdateFormTitle(); // Cập nhật tiêu đề form
         }
 
-        // Xử lý phím nóng
         protected override void WndProc(ref Message m) // Xử lý thông điệp cửa sổ (bao gồm phím nóng)
         {
             base.WndProc(ref m); // Gọi phương thức cơ sở
@@ -451,8 +450,8 @@ namespace PasteTool
                 switch (id) // Kiểm tra ID
                 {
                     case HOTKEY_F1: // Nếu là F1
-                        // Nếu không dán và TextBox bị khóa, bắt đầu dán
-                        if (!isPasting && txtTextbox.ReadOnly) // Kiểm tra điều kiện
+                        // Nếu không dán và có dữ liệu trong textbox, bắt đầu dán
+                        if (!isPasting && !string.IsNullOrEmpty(txtTextbox.Text)) // Kiểm tra điều kiện: không đang dán và textbox không rỗng
                         {
                             _ = StartPasting(); // Bắt đầu dán (không chờ)
                         }
