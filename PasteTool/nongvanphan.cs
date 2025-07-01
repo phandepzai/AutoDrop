@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -189,10 +189,7 @@ namespace PasteTool
             txtSpeed.Enabled = true; // Cho phép chỉnh tốc độ
             isPasting = false; // Đặt trạng thái không dán
 
-            // Đăng ký phím nóng F1 và ESC
-            RegisterHotKey(this.Handle, HOTKEY_F1, 0, (int)Keys.F1); // Đăng ký phím nóng F1
-            RegisterHotKey(this.Handle, HOTKEY_ESC, 0, (int)Keys.Escape); // Đăng ký phím nóng ESC
-
+            
             // *** Thêm dòng này để cập nhật trạng thái ***
             lbStatus.Text = "    SẴN SÀNG"; // Cập nhật trạng thái
             lbStatus.ForeColor = Color.DarkGreen; // Tùy chọn: Đặt màu cho trạng thái
@@ -269,7 +266,6 @@ namespace PasteTool
             UpdateFormTitle(); // Cập nhật tiêu đề form
             await PasteLinesAsync(); // Thay đổi: Thêm 'await' trước lời gọi
         }
-
         // Dừng quá trình dán
         private void StopPasting(bool completed) // Dừng quá trình dán
         {
@@ -280,30 +276,34 @@ namespace PasteTool
                 isCompleted = true; // Đặt trạng thái hoàn thành
                 UpdateFormTitle(true); // Hiện tiến độ cuối cùng
                 StartTitleResetTimer(); // Bắt đầu timer 5 phút để đổi về tên gốc
+                SendKeys.SendWait("{ENTER}"); // Gửi phím ENTER
+                Thread.Sleep(500); // Tạm dừng 500ms
+                var notify = new NotifyForm($"Đã hoàn thành {currentLineIndex} dòng !"); // Tạo form thông báo
+                notify.ShowDialog(); // Hiển thị form thông báo TopMost
+
+                // *** Thêm dòng này để cập nhật trạng thái khi hoàn thành ***
+                lbStatus.Text = $"Hoàn thành dán\n{currentLineIndex} dòng!"; // Cập nhật trạng thái
+                lbStatus.ForeColor = Color.Green; // Tùy chọn: Đặt màu cho trạng thái
             }
             else // Nếu không hoàn thành
             {
                 isCompleted = false; // Đặt trạng thái chưa hoàn thành
                 UpdateFormTitle(false); // Quay về tiêu đề mặc định NGAY LẬP TỨC
                 if (titleResetTimer != null) titleResetTimer.Stop(); // Đảm bảo không còn timer chạy
+
+                // *** Thêm dòng này để cập nhật trạng thái ***
+                lbStatus.Text = "Đã tạm dừng\nvà mở khóa"; // Cập nhật trạng thái
+                lbStatus.ForeColor = Color.Red; // Tùy chọn: Đặt màu cho trạng thái
             }
-            txtTextbox.ReadOnly = true; // Khóa TextBox
-            btnSTART.Enabled = false; // Vô hiệu hóa nút START
-            btnSTOP.Enabled = true; // Kích hoạt nút STOP
+
+            // Luôn mở khóa txtTextbox khi quá trình dán dừng, bất kể hoàn thành hay tạm dừng
+            txtTextbox.ReadOnly = false; // Mở khóa TextBox
+            txtTextbox.BackColor = defaultTextboxBackColor; // Khôi phục màu nền mặc định
+            btnSTART.Enabled = true; // Kích hoạt nút START
+            btnSTOP.Enabled = false; // Vô hiệu hóa nút STOP
             btnRESET.Enabled = true; // Kích hoạt nút RESET
 
-            // Nếu hoàn thành, thông báo
-            if (completed) // Nếu đã hoàn thành
-            {
-                SendKeys.SendWait("{ENTER}"); // Gửi phím ENTER
-                Thread.Sleep(500); // Tạm dừng 500ms
-                var notify = new NotifyForm($"Đã hoàn thành {currentLineIndex} dòng !"); // Tạo form thông báo
-                notify.ShowDialog(); // Hiển thị form thông báo TopMost
-            }
-            // *** Thêm dòng này để cập nhật trạng thái khi hoàn thành ***
-            lbStatus.Text = $"Hoàn thành dán\n{currentLineIndex} dòng!"; // Cập nhật trạng thái
-            lbStatus.ForeColor = Color.Green; // Tùy chọn: Đặt màu cho trạng thái
-            lbStatus.TextAlign = ContentAlignment.MiddleCenter; // Căn lề chữ ở giữa
+            lbStatus.TextAlign = ContentAlignment.MiddleCenter; // Căn giữa chữ
             lbStatus.BackColor = Color.Transparent; // Nền trong suốt
         }
 
@@ -438,6 +438,10 @@ namespace PasteTool
             // *** Thêm dòng này để đặt tiêu đề của Form ***
             DateTime today = DateTime.Now; // Lấy ngày hiện tại
             UpdateFormTitle(); // Cập nhật tiêu đề form
+
+            // Đăng ký phím nóng F1 và ESC
+            RegisterHotKey(this.Handle, HOTKEY_F1, 0, (int)Keys.F1); // Đăng ký phím nóng F1
+            RegisterHotKey(this.Handle, HOTKEY_ESC, 0, (int)Keys.Escape); // Đăng ký phím nóng ESC
         }
 
         protected override void WndProc(ref Message m) // Xử lý thông điệp cửa sổ (bao gồm phím nóng)
