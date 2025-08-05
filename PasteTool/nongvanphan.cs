@@ -231,9 +231,6 @@ namespace PasteTool
             btnSTOP.Enabled = false; // Vô hiệu hóa nút STOP
             btnRESET.Enabled = true; // Kích hoạt nút RESET
 
-            // Hủy đăng ký phím nóng
-            UnregisterHotKey(this.Handle, HOTKEY_F1); // Hủy đăng ký phím nóng F1
-            UnregisterHotKey(this.Handle, HOTKEY_ESC); // Hủy đăng ký phím nóng ESC
             InitializePasteTool(); // Khởi tạo lại công cụ dán
 
             // *** Thêm dòng này để cập nhật trạng thái ***
@@ -247,19 +244,37 @@ namespace PasteTool
             UpdateFormTitle(false); // Cập nhật tiêu đề form
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            // Kiểm tra nếu phím được nhấn là F1
+            if (keyData == Keys.F1)
+            {
+                // Ghi đè chức năng mặc định của phím F1, không cho nó mở cửa sổ trợ giúp
+                // Thực hiện hành động của riêng bạn ở đây
+                // Ví dụ: gọi lại hàm StartPasting()
+                StartPasting();
+
+                // Trả về true để thông báo rằng sự kiện phím đã được xử lý và không cần xử lý thêm
+                return true;
+            }
+
+            // Nếu không phải F1, trả về giá trị mặc định để các phím khác vẫn hoạt động bình thường
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         // Bắt đầu quá trình dán
         private async Task StartPasting() // Bắt đầu quá trình dán bất đồng bộ
         {
             // Kiểm tra nếu TextBox trống
-            if (string.IsNullOrEmpty(txtTextbox.Text)) // Kiểm tra nếu TextBox trống
+            if (string.IsNullOrEmpty(txtTextbox.Text))
             {
-                MessageBox.Show("Vui lòng nhập dữ liệu trước khi bắt đầu dán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning); // Hiển thị thông báo
-                return; // Thoát khỏi hàm
+                MessageBox.Show("Vui lòng nhập dữ liệu trước khi bắt đầu dán.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
 
             // Tách nội dung TextBox thành danh sách các dòng
             lines = txtTextbox.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.None).ToList(); // Tách nội dung TextBox thành danh sách các dòng
-            currentLineIndex = 0; // Đặt lại chỉ số dòng
+            currentLineIndex = 0; // Đặt lại chỉ số dòng về 0
             isPasting = true; // Bắt đầu dán
             isCompleted = false; // Chưa hoàn thành
             if (titleResetTimer != null) titleResetTimer.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
@@ -269,7 +284,7 @@ namespace PasteTool
         // Dừng quá trình dán
         private void StopPasting(bool completed) // Dừng quá trình dán
         {
-            isPasting = false; // Dừng dán
+            isPasting = false; // Luôn đặt isPasting về false khi dừng
 
             if (completed) // Nếu đã hoàn thành
             {
@@ -354,13 +369,13 @@ namespace PasteTool
                         while (isPasting && currentLineIndex < lines.Count) // Lặp khi đang dán và chưa hết dòng
                         {
                             Clipboard.SetText(lines[currentLineIndex]); // Đặt dòng vào clipboard
-                            await Task.Delay(50); // Độ trễ sau copy
+                            await Task.Delay(150); // Độ trễ sau copy
 
                             SendKeys.SendWait("^{v}"); // Dán (Ctrl + V)
-                            await Task.Delay(50); // Độ trễ sau paste
+                            await Task.Delay(150); // Độ trễ sau paste
 
                             SendKeys.SendWait("{ENTER}"); // Nhấn Enter (nếu muốn có thêm delay thì thêm tiếp dòng dưới)
-                            await Task.Delay(50); // Độ trễ sau enter (nếu cần)
+                            await Task.Delay(150); // Độ trễ sau enter (nếu cần)
 
                             currentLineIndex++; // Tăng chỉ số dòng
                             UpdateLineCountLabel(); // Cập nhật nhãn số dòng
