@@ -12,7 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace PasteTool
 {
-    public partial class nongvanphan : Form
+    public partial class Nongvanphan : Form
     {
         // Danh sách các dòng văn bản sẽ được dán
         private List<string> lines; // Danh sách các dòng văn bản sẽ được dán
@@ -32,7 +32,7 @@ namespace PasteTool
 
         // Hiệu ứng cầu vồng tên tác giả
         // Timer để tạo hiệu ứng cầu vồng cho nhãn tên tác giả
-        private System.Windows.Forms.Timer rainbowTimer; // Timer để tạo hiệu ứng cầu vồng cho nhãn tên tác giả
+        private readonly System.Windows.Forms.Timer rainbowTimer; // Timer để tạo hiệu ứng cầu vồng cho nhãn tên tác giả
         // Trạng thái hiệu ứng cầu vồng có đang bật hay không
         private bool isRainbowActive; // Trạng thái hiệu ứng cầu vồng có đang bật hay không
         // Màu gốc của nhãn tên tác giả
@@ -41,7 +41,7 @@ namespace PasteTool
         private double rainbowPhase; // Giai đoạn để tính toán màu sắc cầu vồng
 
         // Màu nền mặc định của TextBox
-        private Color defaultTextboxBackColor; // Màu nền mặc định của TextBox
+        private readonly Color defaultTextboxBackColor; // Màu nền mặc định của TextBox
 
         // Sử dụng thư viện user32.dll để đăng ký và hủy phím nóng
         [DllImport("user32.dll")] // Import thư viện user32.dll
@@ -59,7 +59,7 @@ namespace PasteTool
         private System.Windows.Forms.Timer titleResetTimer; // Timer cho việc reset tiêu đề
 
         // Hàm khởi tạo form
-        public nongvanphan() // Hàm khởi tạo form
+        public Nongvanphan() // Hàm khởi tạo form
         {
             InitializeComponent(); // Khởi tạo các thành phần của form
             // Khởi tạo công cụ dán
@@ -68,8 +68,10 @@ namespace PasteTool
             InitializeClock(); // Khởi tạo đồng hồ
             //this.TopMost = true;//Luôn hiện trên các ứng dụng khác // Luôn hiện trên các ứng dụng khác
             // Khởi tạo hiệu ứng cầu vồng cho tên tác giả
-            rainbowTimer = new System.Windows.Forms.Timer(); // Khởi tạo timer cầu vồng
-            rainbowTimer.Interval = 100; // Cập nhật màu mỗi 100ms
+            rainbowTimer = new System.Windows.Forms.Timer
+            {
+                Interval = 100 // Cập nhật màu mỗi 100ms
+            }; // Khởi tạo timer cầu vồng
             rainbowTimer.Tick += RainbowTimer_Tick; // Gắn sự kiện Tick
             isRainbowActive = false; // Đặt trạng thái hiệu ứng cầu vồng là không hoạt động
             originalAuthorColor = lbAuthor.ForeColor; // Lưu màu gốc của nhãn
@@ -135,19 +137,23 @@ namespace PasteTool
         // Khởi tạo đồng hồ hiển thị thời gian
         private void InitializeClock() // Khởi tạo đồng hồ hiển thị thời gian
         {
-            lbClock = new Label(); // Khởi tạo một đối tượng Label
-            lbClock.AutoSize = true; // Tự động điều chỉnh kích thước
-            lbClock.Font = new Font("Arial", 11, FontStyle.Bold); // Đặt font chữ
-            lbClock.ForeColor = Color.FromArgb(255, 69, 0); // Đặt màu chữ
-            lbClock.BackColor = Color.Transparent; // Nền trong suốt
-            lbClock.TextAlign = ContentAlignment.MiddleCenter; // Căn giữa chữ
-            // Đặt vị trí đồng hồ phía trên nút START
-            lbClock.Location = new Point(btnSTART.Left + 5, 25); // Đặt vị trí
-            lbClock.Size = new Size(btnRESET.Right - btnSTART.Left, 25); // Đặt kích thước
+            lbClock = new Label
+            {
+                AutoSize = true, // Tự động điều chỉnh kích thước
+                Font = new Font("Segoe UI", 10, FontStyle.Bold), // Đặt font chữ
+                ForeColor = Color.FromArgb(255, 69, 0), // Đặt màu chữ
+                BackColor = Color.Transparent, // Nền trong suốt
+                TextAlign = ContentAlignment.MiddleCenter, // Căn giữa chữ
+                                                           // Đặt vị trí đồng hồ phía trên nút START
+                Location = new Point(btnSTART.Left + 5, 25), // Đặt vị trí
+                Size = new Size(btnRESET.Right - btnSTART.Left, 25) // Đặt kích thước
+            }; // Khởi tạo một đối tượng Label
             this.Controls.Add(lbClock); // Thêm đồng hồ vào form
 
-            timer = new System.Windows.Forms.Timer(); // Khởi tạo một đối tượng Timer
-            timer.Interval = 500; // Cập nhật mỗi 0.5 giây
+            timer = new System.Windows.Forms.Timer
+            {
+                Interval = 500 // Cập nhật mỗi 0.5 giây
+            }; // Khởi tạo một đối tượng Timer
             timer.Tick += Timer_Tick; // Gắn sự kiện Tick
             timer.Start(); // Bắt đầu timer
 
@@ -165,7 +171,7 @@ namespace PasteTool
         {
             TimeZoneInfo vnTimeZone = TimeZoneInfo.FindSystemTimeZoneById("SE Asia Standard Time"); // Tìm múi giờ Việt Nam
             DateTime vnTime = TimeZoneInfo.ConvertTimeFromUtc(DateTime.UtcNow, vnTimeZone); // Chuyển đổi thời gian UTC sang múi giờ Việt Nam
-            lbClock.Text = vnTime.ToString("HH:mm:ss"); // Hiển thị giờ:phút:giây
+            lbClock.Text = vnTime.ToString("HH:mm:ss"); // Hiển thị giờ:phút:giây           
         }
 
         // Khởi tạo các biến và trạng thái cho công cụ dán
@@ -179,7 +185,7 @@ namespace PasteTool
         }
 
         // Sự kiện khi nhấn nút START
-        private void btnSTART_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút START
+        private void BtnSTART_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút START
         {
             txtTextbox.ReadOnly = true; // Khóa TextBox
             txtTextbox.BackColor = Color.LightYellow; // Đặt màu nền vàng nhạt
@@ -198,10 +204,10 @@ namespace PasteTool
         }
 
         // Sự kiện khi nhấn nút STOP
-        private void btnSTOP_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút STOP
+        private void BtnSTOP_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút STOP
         {
             StopPasting(false); // Dừng dán mà không đánh dấu hoàn thành
-            if (titleResetTimer != null) titleResetTimer.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
+            titleResetTimer?.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
             isCompleted = false; // Đặt trạng thái chưa hoàn thành
             UpdateFormTitle(false); // Cập nhật tiêu đề form
             txtTextbox.ReadOnly = false; // Mở khóa TextBox
@@ -216,7 +222,7 @@ namespace PasteTool
         }
 
         // Sự kiện khi nhấn nút RESET
-        private void btnRESET_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút RESET
+        private void BtnRESET_Click(object sender, EventArgs e) // Sự kiện khi nhấn nút RESET
         {
             ResetForm(); // Đặt lại toàn bộ form
         }
@@ -239,7 +245,7 @@ namespace PasteTool
             lbStatus.TextAlign = ContentAlignment.MiddleCenter; // Căn lề chữ ở giữa
             lbStatus.BackColor = Color.Transparent; // Nền trong suốt
 
-            if (titleResetTimer != null) titleResetTimer.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
+            titleResetTimer?.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
             isCompleted = false; // Đặt trạng thái chưa hoàn thành
             UpdateFormTitle(false); // Cập nhật tiêu đề form
         }
@@ -252,7 +258,7 @@ namespace PasteTool
                 // Ghi đè chức năng mặc định của phím F1, không cho nó mở cửa sổ trợ giúp
                 // Thực hiện hành động của riêng bạn ở đây
                 // Ví dụ: gọi lại hàm StartPasting()
-                StartPasting();
+                StartPasting().Wait();
 
                 // Trả về true để thông báo rằng sự kiện phím đã được xử lý và không cần xử lý thêm
                 return true;
@@ -277,7 +283,7 @@ namespace PasteTool
             currentLineIndex = 0; // Đặt lại chỉ số dòng về 0
             isPasting = true; // Bắt đầu dán
             isCompleted = false; // Chưa hoàn thành
-            if (titleResetTimer != null) titleResetTimer.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
+            titleResetTimer?.Stop(); // Dừng timer reset tiêu đề nếu đang chạy
             UpdateFormTitle(); // Cập nhật tiêu đề form
             await PasteLinesAsync(); // Thay đổi: Thêm 'await' trước lời gọi
         }
@@ -304,7 +310,7 @@ namespace PasteTool
             {
                 isCompleted = false; // Đặt trạng thái chưa hoàn thành
                 UpdateFormTitle(false); // Quay về tiêu đề mặc định NGAY LẬP TỨC
-                if (titleResetTimer != null) titleResetTimer.Stop(); // Đảm bảo không còn timer chạy
+                titleResetTimer?.Stop(); // Đảm bảo không còn timer chạy
 
                 // *** Thêm dòng này để cập nhật trạng thái ***
                 lbStatus.Text = "Đã tạm dừng\nvà mở khóa"; // Cập nhật trạng thái
@@ -369,14 +375,9 @@ namespace PasteTool
                         while (isPasting && currentLineIndex < lines.Count) // Lặp khi đang dán và chưa hết dòng
                         {
                             Clipboard.SetText(lines[currentLineIndex]); // Đặt dòng vào clipboard
-                            await Task.Delay(150); // Độ trễ sau copy
-
                             SendKeys.SendWait("^{v}"); // Dán (Ctrl + V)
-                            await Task.Delay(150); // Độ trễ sau paste
-
+                            await Task.Delay(20); // Độ trễ 20ms sau paste
                             SendKeys.SendWait("{ENTER}"); // Nhấn Enter (nếu muốn có thêm delay thì thêm tiếp dòng dưới)
-                            await Task.Delay(150); // Độ trễ sau enter (nếu cần)
-
                             currentLineIndex++; // Tăng chỉ số dòng
                             UpdateLineCountLabel(); // Cập nhật nhãn số dòng
                             UpdateFormTitle(); // Cập nhật tiến độ trên tiêu đề
@@ -407,8 +408,10 @@ namespace PasteTool
         {
             if (titleResetTimer == null) // Nếu timer chưa được khởi tạo
             {
-                titleResetTimer = new System.Windows.Forms.Timer(); // Khởi tạo timer
-                titleResetTimer.Interval = 5 * 60 * 1000; // 5 phút = 300000 ms
+                titleResetTimer = new System.Windows.Forms.Timer
+                {
+                    Interval = 5 * 60 * 1000 // 5 phút = 300000 ms
+                }; // Khởi tạo timer
                 titleResetTimer.Tick += TitleResetTimer_Tick; // Gắn sự kiện Tick
             }
             titleResetTimer.Start(); // Bắt đầu timer
@@ -442,7 +445,7 @@ namespace PasteTool
         private void Form1_Load(object sender, EventArgs e) // Sự kiện khi form được tải
         {
             btnSTOP.Enabled = false; // Vô hiệu hóa nút STOP
-            txtTextbox.TextChanged += txtTextbox_TextChanged; // Gắn sự kiện thay đổi TextBox
+            txtTextbox.TextChanged += TxtTextbox_TextChanged; // Gắn sự kiện thay đổi TextBox
             UpdateLineCountLabel(); // Cập nhật nhãn số dòng
             UpdateScrollbarVisibility(); // Cập nhật thanh cuộn
             // Label trạng thái
@@ -450,8 +453,8 @@ namespace PasteTool
             lbStatus.ForeColor = Color.DimGray; // Tùy chọn: Đặt màu cho trạng thái ban đầu
             lbStatus.TextAlign = ContentAlignment.MiddleCenter; // Căn lề chữ ở giữa
             lbStatus.BackColor = Color.Transparent; // Nền trong suốt
-            // *** Thêm dòng này để đặt tiêu đề của Form ***
-            DateTime today = DateTime.Now; // Lấy ngày hiện tại
+                                                    // *** Thêm dòng này để đặt tiêu đề của Form ***
+            _ = DateTime.Now; // Lấy ngày hiện tại
             UpdateFormTitle(); // Cập nhật tiêu đề form
 
             // Đăng ký phím nóng F1 và ESC
@@ -495,7 +498,7 @@ namespace PasteTool
         }
 
         // Sự kiện khi nội dung TextBox thay đổi
-        private void txtTextbox_TextChanged(object sender, EventArgs e) // Sự kiện khi nội dung TextBox thay đổi
+        private void TxtTextbox_TextChanged(object sender, EventArgs e) // Sự kiện khi nội dung TextBox thay đổi
         {
             UpdateLineCountLabel(); // Cập nhật nhãn số dòng
             txtTextbox.SelectionStart = txtTextbox.Text.Length; // Đặt con trỏ ở cuối

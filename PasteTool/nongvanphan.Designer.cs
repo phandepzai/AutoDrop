@@ -2,7 +2,7 @@
 
 namespace PasteTool
 {
-    partial class nongvanphan
+    partial class Nongvanphan
     {
         /// <summary>
         /// Required designer variable.
@@ -30,7 +30,7 @@ namespace PasteTool
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(nongvanphan));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Nongvanphan));
             this.btnSTART = new System.Windows.Forms.Button();
             this.btnSTOP = new System.Windows.Forms.Button();
             this.btnRESET = new System.Windows.Forms.Button();
@@ -51,7 +51,7 @@ namespace PasteTool
             this.btnSTART.TabIndex = 0;
             this.btnSTART.Text = "START";
             this.btnSTART.UseVisualStyleBackColor = true;
-            this.btnSTART.Click += new System.EventHandler(this.btnSTART_Click);
+            this.btnSTART.Click += new System.EventHandler(this.BtnSTART_Click);
             // 
             // btnSTOP
             // 
@@ -61,7 +61,7 @@ namespace PasteTool
             this.btnSTOP.TabIndex = 1;
             this.btnSTOP.Text = "STOP";
             this.btnSTOP.UseVisualStyleBackColor = true;
-            this.btnSTOP.Click += new System.EventHandler(this.btnSTOP_Click);
+            this.btnSTOP.Click += new System.EventHandler(this.BtnSTOP_Click);
             // 
             // btnRESET
             // 
@@ -71,7 +71,7 @@ namespace PasteTool
             this.btnRESET.TabIndex = 2;
             this.btnRESET.Text = "RESET";
             this.btnRESET.UseVisualStyleBackColor = true;
-            this.btnRESET.Click += new System.EventHandler(this.btnRESET_Click);
+            this.btnRESET.Click += new System.EventHandler(this.BtnRESET_Click);
             // 
             // txtTextbox
             // 
@@ -121,8 +121,8 @@ namespace PasteTool
             this.lbAuthor.AutoSize = true;
             this.lbAuthor.BackColor = System.Drawing.Color.Transparent;
             this.lbAuthor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbAuthor.ForeColor = System.Drawing.Color.Silver;
-            this.lbAuthor.Location = new System.Drawing.Point(219, 482);
+            this.lbAuthor.ForeColor = System.Drawing.SystemColors.Control;
+            this.lbAuthor.Location = new System.Drawing.Point(217, 480);
             this.lbAuthor.Name = "lbAuthor";
             this.lbAuthor.Size = new System.Drawing.Size(90, 13);
             this.lbAuthor.TabIndex = 7;

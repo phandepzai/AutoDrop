@@ -16,7 +16,7 @@ namespace PasteTool
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new nongvanphan());
+            Application.Run(new Nongvanphan());
         }
     }
 }
