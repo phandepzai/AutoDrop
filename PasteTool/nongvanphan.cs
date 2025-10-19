@@ -84,6 +84,15 @@ namespace PasteTool
 
             // Lưu màu nền mặc định của TextBox
             defaultTextboxBackColor = txtTextbox.BackColor; // Lưu màu nền mặc định của TextBox
+
+            //Kiểm tra bản cập nhật mới ứng dụng khi chạy
+            UpdateManager.CheckForUpdates("FAB Inspection.exe", new[]
+            {
+                "http://107.125.221.79:8888/update/DROP/",
+                //"http://107.126.41.111:8888/update/FABCONF/",
+                //"http://192.168.111.101:8888/update/FABCONF/"
+            });
+
         }
 
         // Sự kiện Tick của timer cầu vồng, cập nhật màu sắc
