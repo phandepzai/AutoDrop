@@ -89,8 +89,8 @@ namespace PasteTool
             UpdateManager.CheckForUpdates("FAB Inspection.exe", new[]
             {
                 "http://107.125.221.79:8888/update/DROP/",
-                //"http://107.126.41.111:8888/update/FABCONF/",
-                //"http://192.168.111.101:8888/update/FABCONF/"
+                "http://107.126.41.111:8888/update/DROP/",
+                //"http://192.168.111.101:8888/update/DROP/"
             });
 
         }

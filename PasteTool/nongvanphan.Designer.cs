@@ -144,13 +144,13 @@ namespace PasteTool
             this.lbInput.BackColor = System.Drawing.Color.Transparent;
             this.lbInput.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInput.ForeColor = System.Drawing.Color.Indigo;
-            this.lbInput.Location = new System.Drawing.Point(8, 4);
+            this.lbInput.Location = new System.Drawing.Point(68, 6);
             this.lbInput.Name = "lbInput";
             this.lbInput.Size = new System.Drawing.Size(67, 13);
             this.lbInput.TabIndex = 9;
             this.lbInput.Text = "Nhập dữ liệu";
             // 
-            // nongvanphan
+            // Nongvanphan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -171,7 +171,7 @@ namespace PasteTool
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.Name = "nongvanphan";
+            this.Name = "Nongvanphan";
             this.Text = "FAB";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
