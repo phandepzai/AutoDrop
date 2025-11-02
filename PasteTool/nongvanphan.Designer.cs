@@ -45,9 +45,9 @@ namespace PasteTool
             // 
             // btnSTART
             // 
-            this.btnSTART.Location = new System.Drawing.Point(224, 66);
+            this.btnSTART.Location = new System.Drawing.Point(264, 66);
             this.btnSTART.Name = "btnSTART";
-            this.btnSTART.Size = new System.Drawing.Size(75, 40);
+            this.btnSTART.Size = new System.Drawing.Size(88, 40);
             this.btnSTART.TabIndex = 0;
             this.btnSTART.Text = "START";
             this.btnSTART.UseVisualStyleBackColor = true;
@@ -55,9 +55,9 @@ namespace PasteTool
             // 
             // btnSTOP
             // 
-            this.btnSTOP.Location = new System.Drawing.Point(224, 124);
+            this.btnSTOP.Location = new System.Drawing.Point(264, 124);
             this.btnSTOP.Name = "btnSTOP";
-            this.btnSTOP.Size = new System.Drawing.Size(75, 40);
+            this.btnSTOP.Size = new System.Drawing.Size(88, 40);
             this.btnSTOP.TabIndex = 1;
             this.btnSTOP.Text = "STOP";
             this.btnSTOP.UseVisualStyleBackColor = true;
@@ -65,9 +65,9 @@ namespace PasteTool
             // 
             // btnRESET
             // 
-            this.btnRESET.Location = new System.Drawing.Point(224, 181);
+            this.btnRESET.Location = new System.Drawing.Point(264, 181);
             this.btnRESET.Name = "btnRESET";
-            this.btnRESET.Size = new System.Drawing.Size(75, 40);
+            this.btnRESET.Size = new System.Drawing.Size(88, 40);
             this.btnRESET.TabIndex = 2;
             this.btnRESET.Text = "RESET";
             this.btnRESET.UseVisualStyleBackColor = true;
@@ -77,10 +77,10 @@ namespace PasteTool
             // 
             this.txtTextbox.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTextbox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTextbox.Location = new System.Drawing.Point(9, 24);
+            this.txtTextbox.Location = new System.Drawing.Point(11, 23);
             this.txtTextbox.Multiline = true;
             this.txtTextbox.Name = "txtTextbox";
-            this.txtTextbox.Size = new System.Drawing.Size(200, 451);
+            this.txtTextbox.Size = new System.Drawing.Size(236, 451);
             this.txtTextbox.TabIndex = 3;
             this.txtTextbox.WordWrap = false;
             // 
@@ -88,10 +88,10 @@ namespace PasteTool
             // 
             this.lbCount.AutoSize = true;
             this.lbCount.BackColor = System.Drawing.Color.Transparent;
-            this.lbCount.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbCount.Font = new System.Drawing.Font("Segoe UI Semibold", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbCount.Location = new System.Drawing.Point(8, 479);
             this.lbCount.Name = "lbCount";
-            this.lbCount.Size = new System.Drawing.Size(34, 15);
+            this.lbCount.Size = new System.Drawing.Size(35, 17);
             this.lbCount.TabIndex = 4;
             this.lbCount.Text = "Line:";
             // 
@@ -99,10 +99,11 @@ namespace PasteTool
             // 
             this.txtSpeed.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSpeed.ForeColor = System.Drawing.Color.MediumBlue;
-            this.txtSpeed.Location = new System.Drawing.Point(236, 262);
+            this.txtSpeed.Location = new System.Drawing.Point(276, 262);
+            this.txtSpeed.MaxLength = 65534;
             this.txtSpeed.Multiline = true;
             this.txtSpeed.Name = "txtSpeed";
-            this.txtSpeed.Size = new System.Drawing.Size(49, 24);
+            this.txtSpeed.Size = new System.Drawing.Size(62, 24);
             this.txtSpeed.TabIndex = 5;
             this.txtSpeed.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
@@ -110,7 +111,7 @@ namespace PasteTool
             // 
             this.labelSpeed.AutoSize = true;
             this.labelSpeed.BackColor = System.Drawing.Color.Transparent;
-            this.labelSpeed.Location = new System.Drawing.Point(230, 242);
+            this.labelSpeed.Location = new System.Drawing.Point(275, 242);
             this.labelSpeed.Name = "labelSpeed";
             this.labelSpeed.Size = new System.Drawing.Size(64, 13);
             this.labelSpeed.TabIndex = 6;
@@ -122,7 +123,7 @@ namespace PasteTool
             this.lbAuthor.BackColor = System.Drawing.Color.Transparent;
             this.lbAuthor.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAuthor.ForeColor = System.Drawing.SystemColors.Control;
-            this.lbAuthor.Location = new System.Drawing.Point(217, 480);
+            this.lbAuthor.Location = new System.Drawing.Point(265, 480);
             this.lbAuthor.Name = "lbAuthor";
             this.lbAuthor.Size = new System.Drawing.Size(90, 13);
             this.lbAuthor.TabIndex = 7;
@@ -132,7 +133,7 @@ namespace PasteTool
             // 
             this.lbStatus.AutoSize = true;
             this.lbStatus.BackColor = System.Drawing.Color.Transparent;
-            this.lbStatus.Location = new System.Drawing.Point(225, 328);
+            this.lbStatus.Location = new System.Drawing.Point(272, 329);
             this.lbStatus.Name = "lbStatus";
             this.lbStatus.Size = new System.Drawing.Size(58, 13);
             this.lbStatus.TabIndex = 8;
@@ -144,7 +145,7 @@ namespace PasteTool
             this.lbInput.BackColor = System.Drawing.Color.Transparent;
             this.lbInput.Font = new System.Drawing.Font("Tahoma", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbInput.ForeColor = System.Drawing.Color.Indigo;
-            this.lbInput.Location = new System.Drawing.Point(68, 6);
+            this.lbInput.Location = new System.Drawing.Point(91, 5);
             this.lbInput.Name = "lbInput";
             this.lbInput.Size = new System.Drawing.Size(67, 13);
             this.lbInput.TabIndex = 9;
@@ -154,9 +155,10 @@ namespace PasteTool
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.Control;
             this.BackgroundImage = global::PasteTool.Properties.Resources.bgapp;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(314, 499);
+            this.ClientSize = new System.Drawing.Size(367, 499);
             this.Controls.Add(this.lbInput);
             this.Controls.Add(this.lbStatus);
             this.Controls.Add(this.lbAuthor);
@@ -172,6 +174,7 @@ namespace PasteTool
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "Nongvanphan";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FAB";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

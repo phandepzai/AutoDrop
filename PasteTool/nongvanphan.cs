@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 
 namespace PasteTool
 {
+    #region DROP APP
     public partial class Nongvanphan : Form
     {
         // Danh sách các dòng văn bản sẽ được dán
@@ -154,7 +155,7 @@ namespace PasteTool
                 BackColor = Color.Transparent, // Nền trong suốt
                 TextAlign = ContentAlignment.MiddleCenter, // Căn giữa chữ
                                                            // Đặt vị trí đồng hồ phía trên nút START
-                Location = new Point(btnSTART.Left + 5, 25), // Đặt vị trí
+                Location = new Point(btnSTART.Left + 10, 25), // Đặt vị trí
                 Size = new Size(btnRESET.Right - btnSTART.Left, 25) // Đặt kích thước
             }; // Khởi tạo một đối tượng Label
             this.Controls.Add(lbClock); // Thêm đồng hồ vào form
@@ -165,7 +166,6 @@ namespace PasteTool
             }; // Khởi tạo một đối tượng Timer
             timer.Tick += Timer_Tick; // Gắn sự kiện Tick
             timer.Start(); // Bắt đầu timer
-
             UpdateClock(); // Cập nhật thời gian ngay khi khởi tạo
         }
 
@@ -312,7 +312,7 @@ namespace PasteTool
                 notify.ShowDialog(); // Hiển thị form thông báo TopMost
 
                 // *** Thêm dòng này để cập nhật trạng thái khi hoàn thành ***
-                lbStatus.Text = $"Hoàn thành dán\n{currentLineIndex} dòng!"; // Cập nhật trạng thái
+                lbStatus.Text = $"Hoàn thành \n{currentLineIndex} dòng!"; // Cập nhật trạng thái
                 lbStatus.ForeColor = Color.Green; // Tùy chọn: Đặt màu cho trạng thái
             }
             else // Nếu không hoàn thành
@@ -581,4 +581,5 @@ namespace PasteTool
             UpdateScrollbarVisibility(); // Cập nhật thanh cuộn
         }
     }
+    #endregion
 }
